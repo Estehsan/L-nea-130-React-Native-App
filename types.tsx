@@ -10,8 +10,16 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
+  Denuncias: undefined;
+  Quejas: undefined;
+  Reclamos: undefined;
+  Sugerencias: undefined;
 };
 
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
+};
+
+export type TabThreeParamList = {
+  TabThreeScreen: undefined;
 };

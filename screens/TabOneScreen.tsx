@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback, Image } from "react-native";
 
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
@@ -7,7 +7,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-export default function TabOneScreen() {
+import Colors from "../constants/Colors";
+export default function TabOneScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.tcontainer}>
@@ -17,52 +18,74 @@ export default function TabOneScreen() {
             alignItems: "center",
             marginTop: 25,
             width: "100%",
-            backgroundColor: "#00a46c",
+            backgroundColor: "#3498db",
           }}
         >
-          <Text
+          <View
             style={{
-              fontSize: 30,
-              color: "#fff",
-              fontWeight: "bold",
+              alignContent: "center",
+              width: "100%",
+              backgroundColor: Colors.light,
+              alignItems: "center",
             }}
           >
-            Hello!
-          </Text>
+            <Image
+              source={require("./../assets/images/logo.png")}
+              style={{ width: 150, height: 150 }}
+            />
+            <Text
+              style={{
+                fontSize: 25,
+                color: "#fff",
+                fontWeight: "bold",
+              }}
+            >
+              Que Desea Realizar?
+            </Text>
+          </View>
         </View>
       </View>
-      <LinearGradient
-        colors={["rgba(0,164,109,0.4)", "transparent"]}
-        style={{
-          left: 0,
-          right: 0,
-          height: 90,
-          marginTop: -45,
-        }}
-      ></LinearGradient>
+
       <View style={styles.cText}>
-        <Text>Hello</Text>
+        <Text></Text>
       </View>
       <View style={styles.bcontainer}>
         <View style={styles.topbcontainer}>
-          <View style={styles.activemenu}>
-            <Entypo name="sound" size={50} color="#FFFFFF" />
-            <Text style={styles.aText}>Denuncias</Text>
-          </View>
-          <View style={styles.menuContainer}>
-            <Feather name="alert-circle" size={50} color="black" />
-            <Text style={styles.activemenuText}>Quejas</Text>
-          </View>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Denuncias")}
+          >
+            <View style={styles.activemenu}>
+              <Entypo name="sound" size={50} color="#FFFFFF" />
+              <Text style={styles.aText}>Denuncias</Text>
+            </View>
+          </TouchableWithoutFeedback>
+
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Quejas")}
+          >
+            <View style={styles.menuContainer}>
+              <Feather name="alert-circle" size={50} color="black" />
+              <Text style={styles.activemenuText}>Quejas</Text>
+            </View>
+          </TouchableWithoutFeedback>
         </View>
         <View style={styles.bottombcontainer}>
-          <View style={styles.menuContainer}>
-            <Feather name="file" size={50} color="black" />
-            <Text style={styles.activemenuText}>Reclamos</Text>
-          </View>
-          <View style={styles.menuContainer}>
-            <FontAwesome5 name="lightbulb" size={50} color="black" />
-            <Text style={styles.activemenuText}>Sugerencias</Text>
-          </View>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Reclamos")}
+          >
+            <View style={styles.menuContainer}>
+              <Feather name="file" size={50} color="black" />
+              <Text style={styles.activemenuText}>Reclamos</Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Sugerencias")}
+          >
+            <View style={styles.menuContainer}>
+              <FontAwesome5 name="lightbulb" size={50} color="black" />
+              <Text style={styles.activemenuText}>Sugerencias</Text>
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </View>
     </View>
@@ -76,14 +99,14 @@ const styles = StyleSheet.create({
   },
   cText: {},
   tcontainer: {
-    backgroundColor: "#00a46c",
+    backgroundColor: "#3498db",
     height: "30%",
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 45,
+    borderBottomRightRadius: 45,
     paddingHorizontal: 20,
   },
   toptcontainer: {
-    backgroundColor: "#00a46c",
+    backgroundColor: "#3498db",
     flex: 1,
   },
   bcontainer: {
@@ -117,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "80%",
     width: "45%",
-    backgroundColor: "#17C37B",
+    backgroundColor: "#3498db",
     borderRadius: 26,
   },
   activemenuText: {
